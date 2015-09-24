@@ -28,6 +28,10 @@ function [ transitions, labels ] = find_transitions(data, thresholds, transition
             transitions(end).stop = indices(trans(j) + seq_length - 2, 2);
         end
     end
+    
+    % Sort transitions by starting time
+    [~, I] = sort([transitions.start]);
+    transitions = transitions(I);
 end
 
 function flag = find_sequence(data, sequence)
